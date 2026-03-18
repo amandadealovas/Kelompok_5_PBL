@@ -17,11 +17,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
- 
 // ─── Home Screen ──────────────────────────────────────────
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
- 
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
- 
+
               // ── HEADER ──────────────────────────────────
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
- 
+
                   // Tombol notifikasi
                   Container(
                     width: 40,
@@ -73,12 +79,49 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
+
               // ── END HEADER ───────────────────────────────
- 
             ],
           ),
         ),
       ),
+
+      // ── BOTTOM NAV ──────────────────────────────
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: const Color(0xFF111E33),
+          border: Border(
+            top: BorderSide(color: Colors.white.withOpacity(0.08)),
+          ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (i) => setState(() => _currentIndex = i),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: const Color(0xFF4ECDC4),
+          unselectedItemColor: Colors.white38,
+          selectedFontSize: 11,
+          unselectedFontSize: 11,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.edit_outlined),
+              label: 'Catat',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: 'Pola'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.track_changes),
+              label: 'Goals',
+            ),
+          ],
+        ),
+      ),
+      // ── END BOTTOM NAV ──────────────────────────
     );
   }
 }
