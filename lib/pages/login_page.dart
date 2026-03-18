@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
+import '../main.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +9,7 @@ class MyApp extends StatelessWidget {
       home: LoginPage(),
     );
   }
-}
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -27,22 +22,25 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void _handleLogin() {
-    final email = _emailController.text;
-    final password = _passwordController.text;
+void _handleLogin() {
+  final email = _emailController.text;
+  final password = _passwordController.text;
 
-    if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Email dan password tidak boleh kosong')),
-      );
-      return;
-    }
-
-    // TODO: tambahkan logika login di sini
+  if (email.isEmpty || password.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Login berhasil!')),
+      const SnackBar(content: Text('Email dan password tidak boleh kosong')),
     );
+    return;
   }
+
+  // pindah ke HomeScreen
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const HomeScreen(),
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
