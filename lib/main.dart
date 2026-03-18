@@ -83,6 +83,85 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               // ── END HEADER ───────────────────────────────
+              const SizedBox(height: 30),
+              Container(
+                padding: const EdgeInsets.all(20.0),
+                decoration: BoxDecoration(
+                  color: Colors.blue[700],
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2), // Bayangan disesuaikan untuk dark mode
+                      spreadRadius: 2,
+                      blurRadius: 10,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Saldo Tersisa Bulan Ini",
+                      style: TextStyle(color: Colors.blue[100], fontSize: 14),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      "Rp 5.500.000",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      "Update terakhir: 18 Maret 2026",
+                      style: TextStyle(color: Colors.blue[100], fontSize: 12),
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Pemasukan",
+                              style: TextStyle(color: Colors.blue[100], fontSize: 12),
+                            ),
+                            const Text(
+                              "Rp 7.000.000",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "Pengeluaran",
+                              style: TextStyle(color: Colors.blue[100], fontSize: 12),
+                            ),
+                            const Text(
+                              "Rp 1.500.000",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -124,6 +203,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       // ── END BOTTOM NAV ──────────────────────────
+      
+
     );
   }
 }
